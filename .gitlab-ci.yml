@@ -1,0 +1,59 @@
+image: "registry.stensuldev.net/dockerfiles/stensul/ci:3.0.3"
+
+variables:
+  AWS_ACCESS_KEY_ID: ${COVERAGE_AWS_ACCESS_KEY_ID}
+  AWS_SECRET_ACCESS_KEY: ${COVERAGE_AWS_SECRET_ACCESS_KEY}
+  PATH_AWS_DOCS: s3://${COVERAGE_AWS_BUCKET}/documentation/stensul-sdk
+
+# Helpers
+.npm_auth: &npm_auth
+  - printf 'registry=https://npm.stensuldev.net/%s\n//npm.stensuldev.net/:_authToken="'"$NPM_TOKEN"'"%s\n' > /usr/etc/npmrc
+
+cache:
+  paths:
+    - node_modules
+
+stages:
+  - test
+  - publish
+  - doc
+
+.publish_rule: &publish_rule
+  stage: publish
+  only:
+    - /^v\d+\.\d+\.\d+(-beta(.\d+)?)?$/
+  except:
+    - branches
+
+.publish_rule_doc: &publish_rule_doc
+  stage: doc
+  only:
+    - tags
+
+jsunit:
+  stage: test
+  only:
+    - merge_request
+  before_script:
+    - npm install
+  script:
+    - npm run test
+
+publish:
+  <<: *publish_rule
+  before_script:
+    - *npm_auth
+    - npm install
+    - npm run build
+  script:
+    - npm publish
+
+publish_documentation:
+  <<: *publish_rule_doc
+  before_script:
+    - *npm_auth
+    - npm install
+    - npm run docs:build
+  script:
+    # send static storybook folder to s3
+    - aws s3 sync docs/.vuepress/dist ${PATH_AWS_DOCS}

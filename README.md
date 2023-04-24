@@ -1,2 +1,2 @@
 # storybook-autodocs
-Vue 3 SFC to storybook parser
+Storybook autodocs is an utility that takes the typescript definitions of your Vue component and defines the argTypes for storybook automatically.
