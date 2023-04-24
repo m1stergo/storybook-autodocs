@@ -25,4 +25,4 @@ const emit = defineEmits<{
   (e: "selected", payload: {a: true, b: true}): void;
 }>();
 ```
-![emits](./emits.png){width=350px}
+![emits](/emits.png){width=350px}

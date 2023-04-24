@@ -31,7 +31,7 @@ type Props = {
   name: string;
 }
 ```
-![string](./string.png)
+![string](/string.png)
 
 ### number
 ```typescript
@@ -39,7 +39,7 @@ type Props = {
   age: number;
 }
 ```
-![number](./number.png){width=350px}
+![number](/number.png){width=350px}
 
 ### boolean
 ```typescript
@@ -47,7 +47,7 @@ type Props = {
   enabled: boolean;
 }
 ```
-![boolean](./boolean.png)
+![boolean](/boolean.png)
 ### custom type
 ```typescript
 type Props = {
@@ -56,7 +56,7 @@ type Props = {
   response: AxiosReponse;
 }
 ```
-![custom](./custom.png)
+![custom](/custom.png)
 
 ### Array
 Array of any supported type.
@@ -70,7 +70,7 @@ type Props = {
   option: Array<{ id: string, enabled: boolean}>;
 }
 ```
-![array](./array.png)
+![array](/array.png)
 *array of objects is in TODO*
 
 ### union
@@ -91,7 +91,7 @@ type Props = {
   popup: boolean | { element: string[] }
 }
 ```
-![union](./union.png)
+![union](/union.png)
 Union of string/number will show the "choose option" dropdown with corresponding values
 
 ### Object
@@ -100,7 +100,7 @@ type Props = {
   object: { id: string, enabled: boolean}
 }
 ```
-![object](./object.png)
+![object](/object.png)
 Object details are shown as storybook details
 
 ### Function
@@ -109,7 +109,7 @@ type Props = {
   callback: (name: string) => void;
 }
 ```
-![function](./function.png)
+![function](/function.png)
 Functions details are shown in storybook details.
 *@TODO: fix infering of return statement*
 
@@ -117,5 +117,3 @@ Functions details are shown in storybook details.
 Default values are read form the `withDefaults` macro.
 Supported types: `string` `number` `boolean`
 WIP: `array` `object`
-
-![defaults](./defaults.png)

@@ -8,10 +8,10 @@ Storybook uses the `vue-docgen-api` to infer `storybook argTypes` from your comp
 You must add extra effort to manually define and update stories, which is time consuming and most developers are not willing to do, so the stories end up being rather vague and not adding much value.
 
 _without storybook-autodocs_
-![before](./before.png)
+![before](/before.png)
 
 _with storybook-autodocs_
-![after](./after.png)
+![after](/after.png)
 
 ## Solution
 - `storybook-autodocs` does not require any additional information other than the type definition already implemented in the Vue file.

@@ -20,4 +20,3 @@ defineExpose({
   open: () => visible.value = false; <-- won't be documented.
 });
 ```
-![expose](./expose.png){width=350px}
