@@ -1,4 +1,5 @@
 const parser = require("./parser");
+const { getObjectStatement } = require("./utils");
 
 const TYPE_PROPS_STATEMENT_REGEX = (target) => {
   return new RegExp(String.raw`type ${target} = ({(?:.|\n)+?)(?:\bconst\b|\bvar\b|\blet\b)`);
@@ -11,18 +12,6 @@ const SLOT_REGEX = /(<!--[\s\n]+@slot\s+((?:.|\n)+?)-->)?[\s\n]+(<slot(?:.|\n)+?
 const SLOTS_REGEX = /(<!--[\s\n]+@slot\s+((?:.|\n)+?)-->)?[\s\n]+(<slot(?:.|\n)+?>)/gm;
 const COMMENT_REGEX = /\/\*([^\*]|(\*(?!\/)))*\*\//;
 const COMPONENT_DESC_REGEX = /<script(?:.)+?>\n?\/\*([^\*]|(\*(?!\/)))*\*\//;
-
-const getObjectStatement = (str) => {
-  let lastBracketIndex = -1;
-  for (let i = str.length - 1; i >= 0; i--) {
-    if (str[i] === "}") {
-      lastBracketIndex = i;
-      break;
-    }
-  }
-  if (lastBracketIndex > -1) return str.slice(0, lastBracketIndex + 1);
-  throw new Error("Unexpected string, no ending bracket found");
-}
 
 const getTypedStatement = (str, target = "") => {
   const [,statement] = str.match(TYPE_PROPS_STATEMENT_REGEX(target)) || [];

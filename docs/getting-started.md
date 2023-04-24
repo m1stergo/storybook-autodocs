@@ -38,21 +38,6 @@ import Button from "./Button";
  **/
 const argTypes = { ... };
 /** storybook-autodocs::end **/
-
-export default {
-  title: "components/Button",
-  components: { Button },
-}
 ```
 
-## 2. Update export default with argtypes
-Once the story file is updated, add argTypes to export default
-```javascript
-export default {
-  title: "components/Button",
-  components: { Button },
-  argTypes, // <--
-}
-```
-
-Done!
+Done! `storybook-autodocs` will insert the argTypes in your story.
