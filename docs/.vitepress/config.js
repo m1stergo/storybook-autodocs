@@ -2,6 +2,7 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+  base: "/storybook-autodocs/",
   title: "storybook-autodocs",
   description: "Create storybook docs from vue 3 automatically",
   themeConfig: {
