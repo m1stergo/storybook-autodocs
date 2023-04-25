@@ -1,9 +1,12 @@
-import { defineConfig } from 'vite';
+import { resolve } from 'path'
+import { defineConfig } from 'vite'
 
 export default defineConfig({
   build: {
-    target: 'node',
-    outDir: 'dist',
-    entry: './src/index.js',
+    lib: {
+      entry: resolve(__dirname, 'src/index.js'),
+      name: 'storybook-autodocs',
+      fileName: 'storybook-autodocs',
+    },
   },
 });
