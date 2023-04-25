@@ -10,12 +10,15 @@
     "husky": "8.0.3",
     "lint-staged": "^13.2.0",
     "prettier": "2.8.7",
+    "vite": "^4.3.1",
     "vitepress": "^1.0.0-alpha.72"
   },
   "scripts": {
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs"
+    "docs:preview": "vitepress preview docs",
+    "build": "vite build",
+    "publish": "npm run build && npm publish"
   },
   "name": "@m1stergo/storybook-autodocs",
   "description": "Storybook autodocs is an utility that takes the typescript definitions of your Vue component and defines the argTypes for storybook automatically.",
@@ -39,5 +42,6 @@
   "bugs": {
     "url": "https://github.com/m1stergo/storybook-autodocs/issues"
   },
-  "homepage": "https://github.com/m1stergo/storybook-autodocs#readme"
+  "homepage": "https://github.com/m1stergo/storybook-autodocs#readme",
+  "type": "module"
 }
