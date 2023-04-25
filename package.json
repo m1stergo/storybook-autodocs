@@ -16,5 +16,28 @@
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs"
-  }
+  },
+  "name": "@m1stergo/storybook-autodocs",
+  "description": "Storybook autodocs is an utility that takes the typescript definitions of your Vue component and defines the argTypes for storybook automatically.",
+  "version": "0.0.1",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/m1stergo/storybook-autodocs.git"
+  },
+  "keywords": [
+    "storybook",
+    "autodocs",
+    "vue3",
+    "parser"
+  ],
+  "author": "Elias Torres",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/m1stergo/storybook-autodocs/issues"
+  },
+  "homepage": "https://github.com/m1stergo/storybook-autodocs#readme"
 }
