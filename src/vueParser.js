@@ -4,6 +4,9 @@ const { getObjectStatement } = require("./utils");
 const TYPE_PROPS_STATEMENT_REGEX = (target) => {
   return new RegExp(String.raw`type ${target} = ({(?:.|\n)+?)(?:\bconst\b|\bvar\b|\blet\b)`);
 }
+const INTERFACE_PROPS_STATEMENT_REGEX = (target) => {
+  return new RegExp(String.raw`interface ${target} ({(?:.|\n)+?)(?:\bconst\b|\bvar\b|\blet\b)`);
+}
 const WITH_DEFAULTS_REGEX = /withDefaults\([\n\s]*defineProps<((?:.|\n)+?)>\(\),[\s]+({(?:.|\n)+?)(?:\bconst\b|;|\bvar\b|\blet\b)/;
 const DEFINE_PROPS_REGEX = /defineProps<[\n\s]*((?:.|\n)+?)>\(\)/;
 const DEFINE_EMITS_REGEX = /defineEmits<[\n\s]*((?:.|\n)+?)>\(\)/;
@@ -14,7 +17,7 @@ const COMMENT_REGEX = /\/\*([^\*]|(\*(?!\/)))*\*\//;
 const COMPONENT_DESC_REGEX = /<script(?:.)+?>\n?\/\*([^\*]|(\*(?!\/)))*\*\//;
 
 const getTypedStatement = (str, target = "") => {
-  const [,statement] = str.match(TYPE_PROPS_STATEMENT_REGEX(target)) || [];
+  const [,statement] = str.match(TYPE_PROPS_STATEMENT_REGEX(target)) || str.match(INTERFACE_PROPS_STATEMENT_REGEX(target)) || [];
   if (!statement) throw new Error(`Expected type ${target} statement, received: ${statement}`);
   return getObjectStatement(statement);
 };
